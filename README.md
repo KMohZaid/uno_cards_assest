@@ -8,6 +8,7 @@ This will spam shared link section but its not that big of issue, main issue was
 # What i changed from main source?
 
 - Only edited options images to fix the issue that some of them are not visible when telegram theme is dark/black
+- added no mercy cards for no mercy mode, [thank to this asset](https://textures.spriters-resource.com/pc_computer/uno/asset/502304/)
 
 # What is left to do
 
