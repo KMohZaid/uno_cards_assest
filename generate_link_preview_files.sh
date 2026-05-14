@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Parse --force flag
+FORCE=false
+ANNOUCED=false
+for arg in "$@"; do
+  [[ "$arg" == "--force" ]] && FORCE=true
+done
+
 # Function to convert WebP images to 500x380 PNGs with white background
 # Takes two arguments: input folder and output folder
 convert_webp_to_png() {
@@ -16,6 +23,15 @@ convert_webp_to_png() {
 
     # Construct output path
     output_file="$output_folder/${filename}.png"
+
+    # Skip if output already exists and --force not specified
+    if [[ -f "$output_file" ]] && [[ "$FORCE" == false ]]; then
+      if [[ "$ANNOUCED" == false ]]; then
+        echo -e "\e[32m[NOTICE]\e[0m : Some files already exist. Use --force to overwrite them."
+        ANNOUCED=true
+      fi
+      continue
+    fi
 
     echo "Processing $webp_file -> $output_file"
 
