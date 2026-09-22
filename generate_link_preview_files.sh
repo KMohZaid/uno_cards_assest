@@ -51,8 +51,8 @@ convert_webp_to_png() {
 # but for link preview we are making this image with white background
 
 # Input and output paths
-input_path="images/classic_colorblind/webp"
-output_path="auto_output/images/classic_colorblind/png"
+input_path="images/uno/deck/webp"
+output_path="auto_output/images/uno/deck/png"
 
 # Call the function
 convert_webp_to_png "$input_path" "$output_path"
