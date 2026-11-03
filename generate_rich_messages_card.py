@@ -29,7 +29,9 @@ def main() -> None:
             capture_output=True,
             text=True,
         )
-        _width, height = map(int, identify.stdout.split())
+        _width, source_height = map(int, identify.stdout.split())
+        canvas_height = round(source_height * 1.1)
+        canvas_width = canvas_height * 2
         output = OUTPUT_DIR / f"{source.stem}.png"
         subprocess.run(
             [
@@ -44,12 +46,12 @@ def main() -> None:
                 "-gravity",
                 "center",
                 "-extent",
-                f"{height * 2}x{height}",
+                f"{canvas_width}x{canvas_height}",
                 str(output),
             ],
             check=True,
         )
-        print(f"{source.name}: {height * 2}x{height} -> {output}")
+        print(f"{source.name}: {canvas_width}x{canvas_height} -> {output}")
 
 
 if __name__ == "__main__":
